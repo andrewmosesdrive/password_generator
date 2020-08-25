@@ -21,7 +21,15 @@ function generatePassword(){
   // Password is currently blank! We need to make a better one
   let password = "";
 
+    let criteria = document.getElementById(criteriaPrompt).value;
+    let length = document.getElementById(lengthPrompt).value;
+    let character = document.getElementById(characterPrompt).value;
+    let values = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=";
 
+    for(let i = 0; i <= length; i++) {
+      password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length - 1)));
+
+    }
 
 
 
