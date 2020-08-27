@@ -50,9 +50,9 @@ function generatePassword() {
 
   // y/n confirms for upper/lower/number/special characters
   let confirmUppercase = confirm("Do you want to include upper case letters?");
-  let confirmLowercase = confirm("Do you want to include upper case letters?");
-  let confirmNumber = confirm("Do you want to include upper case letters?");
-  let confirmSpecialChar = confirm("Do you want to include upper case letters?");
+  let confirmLowercase = confirm("Do you want to include lower case letters?");
+  let confirmNumber = confirm("Do you want to include numbers?");
+  let confirmSpecialChar = confirm("Do you want to include special characters?");
 
 
   // log it out to make sure they do what they're supposed to
