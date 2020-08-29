@@ -14,13 +14,12 @@ function writePassword() {
   passwordText.value = password;
 }
 
+
 /**
  * generate a password based on certain criteria
  */
 function generatePassword() {
-  // create list of possible characters
-
-  // if any condition is true, include the appropriate array, or build string and us str.split?
+  // create list of possible characters via 4 separate arrays
 
   const upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   const lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -28,23 +27,24 @@ function generatePassword() {
   const specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "?"];
 
 
-
   // Password is currently blank! We need to make a better one
   let password = "";
 
 
-
-
-
-  // input criteria from user
-  // prompt for how long the password will be
+  // prompt user to see for how long the password will be
   let passwordLength = prompt("How long do you want your password to be? Password must be between 8 and 128 characters in length.");
 
+
+  // if password length is less than 8 characters, send alert and return
   if (passwordLength < 8) {
     alert("You must choose a password between 8 and 128 characters!");
-    return ""
+
+    return "";
+
   }
 
+
+  // convert argument to string, return integers
   passwordLength = parseInt(passwordLength);
 
 
@@ -55,18 +55,13 @@ function generatePassword() {
   let confirmSpecialChar = confirm("Do you want to include special characters?");
 
 
-  // log it out to make sure they do what they're supposed to
-  console.log(passwordLength, confirmUppercase, confirmLowercase, confirmNumber, confirmSpecialChar)
+  // console.log(passwordLength, confirmUppercase, confirmLowercase, confirmNumber, confirmSpecialChar);
 
 
-
-
-  // create a for loop that repeats number of passwordLength times
-  // math.random out of possible char options
-  // concatenate random characters
+  // create pool of passwords then concatenate the random characters
   let passwordPool = []
 
-
+  // if statements for user character choices, push the corresponding array into passwordPool array
   if (confirmUppercase === true) {
 
     passwordPool.push(upperCase);
@@ -76,40 +71,48 @@ function generatePassword() {
   if (confirmLowercase === true) {
 
     passwordPool.push(lowerCase);
+
   };
 
   if (confirmNumber === true) {
 
     passwordPool.push(number)
+
   };
 
   if (confirmSpecialChar === true) {
 
     passwordPool.push(specialChar);
+
   };
 
+
+  // if no criteria are chosen, alert and return
   if (passwordPool.length === 0) {
     alert("You must choose at least 1 criteria!");
 
     return ""
 
-
   }
 
+
+  // create final array to concatenate all items from password pool
   const finalArray = passwordPool.flat()
 
+
+  // declare new array for joining
   let passwordArray = [];
 
 
-
+  // create a for loop that repeats number of passwordLength times
+  // math.random out of possible char options
   for (let i = 0; i < passwordLength; i++) {
-    debugger;
     let number = Math.floor(Math.random() * Math.floor(finalArray.length));
     passwordArray.push(finalArray[number]);
 
-
   }
 
+  // join all items
   if (passwordArray.length > 0) {
     password = passwordArray.join("");
 
