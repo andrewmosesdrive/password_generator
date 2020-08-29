@@ -31,7 +31,7 @@ function generatePassword() {
   let password = "";
 
 
-  // prompt user to see for how long the password will be
+  // prompt user to see how long the password will be
   let passwordLength = prompt("How long do you want your password to be? Password must be between 8 and 128 characters in length.");
 
 
@@ -41,7 +41,14 @@ function generatePassword() {
 
     return "";
 
-  }
+  };
+
+  // if password length is more than 128 characters, send alert and return
+  if (passwordLength > 128) {
+    alert("You must choose a password between 8 and 128 characters!");
+
+    return "";
+  };
 
 
   // convert argument to string, return integers
@@ -58,8 +65,8 @@ function generatePassword() {
   // console.log(passwordLength, confirmUppercase, confirmLowercase, confirmNumber, confirmSpecialChar);
 
 
-  // create pool of passwords then concatenate the random characters
-  let passwordPool = []
+  // create pool of passwords 
+  let passwordPool = [];
 
   // if statements for user character choices, push the corresponding array into passwordPool array
   if (confirmUppercase === true) {
@@ -91,16 +98,16 @@ function generatePassword() {
   if (passwordPool.length === 0) {
     alert("You must choose at least 1 criteria!");
 
-    return ""
+    return "";
 
-  }
+  };
 
 
   // create final array to concatenate all items from password pool
-  const finalArray = passwordPool.flat()
+  const finalArray = passwordPool.flat();
 
 
-  // declare new array for joining
+  // create new array for joining
   let passwordArray = [];
 
 
@@ -110,15 +117,15 @@ function generatePassword() {
     let number = Math.floor(Math.random() * Math.floor(finalArray.length));
     passwordArray.push(finalArray[number]);
 
-  }
+  };
 
   // join all items
   if (passwordArray.length > 0) {
     password = passwordArray.join("");
 
     return password;
-  }
-}
+  };
+};
 
 // Main Process
 
